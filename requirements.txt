@@ -1,2 +1,8 @@
-langgraph
+pandas
+numpy
+matplotlib
+seaborn
+streamlit
 langchain
+openai
+python-dotenv
