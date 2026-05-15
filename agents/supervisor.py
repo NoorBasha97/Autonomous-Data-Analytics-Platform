@@ -3,7 +3,9 @@ def supervisor_node(state):
     return state
 
 def supervisor_router(state):
-    
+    """
+    Decides which agent to run next
+    """
     print("Supervisor deciding next step...")
 
     #routing logic
