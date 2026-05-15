@@ -1,6 +1,7 @@
+from pprint import pprint
 from agents.ingestion import data_ingestion_agent
 from agents.eda import eda_agent
-from pprint import pprint
+from agents.stats import statistical_agent
 #This is central global state shared among all the agents
 def initialize_state():
     return{
@@ -33,8 +34,14 @@ if __name__ == "__main__":
     state = eda_agent(state)
     
     #printing the output of EDA agent
-    print("\nEDA_Summary:")
-    pprint(state["eda_summary"])
+    # print("\nEDA_Summary:")
+    # pprint(state["eda_summary"])
     
-    print("\n EDA_text_in_HumanReadableForm:")
-    print(state["eda_text"])
+    # print("\n EDA_text_in_HumanReadableForm:")
+    # print(state["eda_text"])
+    
+    #3.Run the Stats Agent
+    state = statistical_agent(state)
+    
+    print("\n Statistics:")
+    pprint(state["statistics"])
