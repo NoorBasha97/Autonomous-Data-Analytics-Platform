@@ -1,6 +1,6 @@
 from tools.data_tools import load_data,handle_missing_values,detect_column_types
 
-def data_ingestion_agent(state,file_path):
+def data_ingestion_agent(state):
     """
     Data Ingestion Agent:
     - Loads data
@@ -9,6 +9,7 @@ def data_ingestion_agent(state,file_path):
     """
     print("Data ingestion agent is running....") #kept this for debugging purpose
     
+    file_path = state["file_path"]
     #1.load data
     df = load_data(file_path)
     

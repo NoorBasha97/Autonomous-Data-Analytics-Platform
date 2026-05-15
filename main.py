@@ -1,9 +1,7 @@
-from pprint import pprint
-from agents.ingestion import data_ingestion_agent
-from agents.eda import eda_agent
-from agents.stats import statistical_agent
-from agents.visualization import visualization_agent
-from agents.insights import insights_agent
+import os
+from graph.workflow import create_workflow
+
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
 
 #This is shared state among all the agents
 def initialize_state():
@@ -16,16 +14,28 @@ def initialize_state():
         "eda_text": "",
         "statistics":{},
         "plots":[],
-        "insights":""
+        "insights":"",
+        "query": "Analyze overall dataset"
     }
     
 if __name__ == "__main__":
     file_path = "sample_data.csv"  #dataset
     
     state = initialize_state()
+    state["file_path"] = file_path
+    
+    # Create workflow
+    app = create_workflow()
+    
+    # Run graph
+    final_state = app.invoke(state)
+    
+    print("\nFINAL INSIGHTS:\n")
+    print(final_state["insights"])
+    
     
     #1.Run the data ingestion agent
-    state = data_ingestion_agent(state, file_path)
+    # state = data_ingestion_agent(state, file_path)
     
     #printing the output of data ingestion agent
     # print("\nColumn types:")
@@ -34,7 +44,7 @@ if __name__ == "__main__":
     # print(state["dataframe"].head())
 
     #2. run the EDA agent
-    state = eda_agent(state)
+    # state = eda_agent(state)
     
     #printing the output of EDA agent
     # print("\nEDA_Summary:")
@@ -44,18 +54,18 @@ if __name__ == "__main__":
     # print(state["eda_text"])
     
     #3.Run the Stats Agent
-    state = statistical_agent(state)
+    # state = statistical_agent(state)
     
     # print("\n Statistics:")
     # pprint(state["statistics"])
     
     #4.Run visualization tool
-    state = visualization_agent(state)
+    # state = visualization_agent(state)
     
     # print("\n Generated plots : ", len(state["plots"]))
     
     #5. Run the insights agent
-    state = insights_agent(state)
+    # state = insights_agent(state)
     
-    print("\n Insights")
-    print(state["insights"])
+    # print("\n Insights")
+    # print(state["insights"])

@@ -26,6 +26,9 @@ def insights_agent(state):
     # Prompt
     prompt = f"""
     You are a professional data analyst.
+    
+    User Request:
+    {user_query}
 
     Based on the dataset:
 
