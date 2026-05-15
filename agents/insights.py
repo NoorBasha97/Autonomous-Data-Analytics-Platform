@@ -46,6 +46,13 @@ def insights_agent(state):
         2. Highlight correlations
         3. Detect anomalies
         4. Suggest business insights
+        
+        IMPORTANT RULES:
+        - Do NOT generate any code
+        - Do NOT repeat the same point
+        - Keep insights concise and clear
+        - Use bullet points
+        - Focus only on analysis, not explanation of methods
 
         Data:
         EDA Summary:
