@@ -1,6 +1,11 @@
 import pandas as pd
 
 def statistical_agent(state):
+    """
+    Statistical Analysis Agent:
+    - Computes descriptive statistics
+    - Computes correlation matrix
+    """
     print("Running the statistical agent...")
     
     df = state["dataframe"]

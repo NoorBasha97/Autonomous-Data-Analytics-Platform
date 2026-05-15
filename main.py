@@ -2,7 +2,9 @@ from pprint import pprint
 from agents.ingestion import data_ingestion_agent
 from agents.eda import eda_agent
 from agents.stats import statistical_agent
-#This is central global state shared among all the agents
+from agents.visualization import visualization_agent
+
+#This is shared state among all the agents
 def initialize_state():
     return{
         "dataframe":None,
@@ -43,5 +45,10 @@ if __name__ == "__main__":
     #3.Run the Stats Agent
     state = statistical_agent(state)
     
-    print("\n Statistics:")
-    pprint(state["statistics"])
+    # print("\n Statistics:")
+    # pprint(state["statistics"])
+    
+    #4.Run visualization tool
+    state = visualization_agent(state)
+    
+    print("\n Generated plots : ", len(state["plots"]))
