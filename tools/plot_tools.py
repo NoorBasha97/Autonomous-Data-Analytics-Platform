@@ -1,20 +1,23 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 def plot_histogram(df, column):
-    plt.figure()
-    sns.histplot(df[column], kde=True)
-    plt.title(f"Distribution of {column}")
-    return plt
+    fig, ax = plt.subplots(figsize=(5, 3))  # smaller size
+    sns.histplot(df[column], kde=True, ax=ax)
+    ax.set_title(f"{column} Distribution")
+    return fig
+
 
 def plot_bar(df, column):
-    plt.figure()
-    df[column].value_counts().plot(kind="bar")
-    plt.title(f"Count of {column}")
-    return plt
+    fig, ax = plt.subplots(figsize=(5, 3))
+    df[column].value_counts().plot(kind="bar", ax=ax)
+    ax.set_title(f"{column} Count")
+    return fig
+
 
 def plot_correlation_heatmap(df):
-    plt.figure()
-    sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
-    plt.title("Correlation Heatmap")
-    return plt
+    fig, ax = plt.subplots(figsize=(5, 4))
+    sns.heatmap(df.corr(), annot=True, cmap="coolwarm", ax=ax)
+    ax.set_title("Correlation Heatmap")
+    return fig
