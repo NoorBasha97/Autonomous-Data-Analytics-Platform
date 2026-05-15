@@ -5,6 +5,10 @@ from langchain_core.messages import HumanMessage
 load_dotenv()
 
 def insights_agent(state):
+    """
+    Insights Agent:
+    - Uses LLM to generate insights from EDA + statistics
+    """
     print("Running Insights Agent...")
 
     # Initialize Groq LLM
