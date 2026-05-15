@@ -1,6 +1,10 @@
 from tools.plot_tools import plot_histogram, plot_bar, plot_correlation_heatmap
 
 def visualization_agent(state):
+    """
+    Visualization Agent:
+    - Generates plots automatically based on data types
+    """
     print("Running visualization agent...")
     
     df = state["dataframe"]
