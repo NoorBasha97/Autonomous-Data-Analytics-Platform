@@ -1,6 +1,12 @@
 import pandas as pd
 
 def eda_agent(state):
+    """
+    EDA Agent:
+    - Generates dataset summary
+    - Missing values analysis
+    - Basic statistics
+    """
     #kept this for debugging purpose
     print("Running EDA agent........")
     
