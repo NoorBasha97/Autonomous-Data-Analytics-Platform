@@ -2,9 +2,7 @@ import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage
-
 load_dotenv()
-
 
 def insights_agent(state):
     print("Running Insights Agent...")
@@ -17,6 +15,9 @@ def insights_agent(state):
 
     eda = state["eda_summary"]
     stats = state["statistics"]
+    
+    #user query
+    user_query = state.get("query", "General analysis")
 
     # Prompt
     prompt = f"""
